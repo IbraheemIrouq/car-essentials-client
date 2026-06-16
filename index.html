@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Essentials – Login</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+  <p class="auth-bg-text">your complete<br>car control panel...</p>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <h1 class="auth-title">login</h1>
+
+      <div id="successMsg" class="success-msg"></div>
+
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <input type="text" id="email" class="form-input" placeholder="username@example.com">
+          <span class="field-error" id="emailError">Please enter a valid email address</span>
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" class="form-input" placeholder="••••••••">
+          <span class="field-error" id="passwordError">Password is required</span>
+        </div>
+        <button type="submit" class="btn btn-blue btn-full">login</button>
+      </form>
+
+      <div class="auth-link">
+        don't have an account? <a href="register.html">register</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
