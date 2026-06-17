@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Essentials – Home</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+  <div class="site-logo">
+    🚗 car essentials
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+  </div>
+
+  <nav class="navbar">
+    <a href="home.html"     class="nav-link active">🏠 <span>home</span></a>
+    <a href="status.html"   class="nav-link">⚡ <span>status</span></a>
+    <a href="controls.html" class="nav-link">⚙️ <span>controls</span></a>
+    <a href="support.html"  class="nav-link">🎧 <span>support</span></a>
+    <a href="account.html"  class="nav-link">👤 <span>account</span></a>
+  </nav>
+
+  <main class="page-content">
+    <h1 class="page-title">Welcome to Car Essentials!</h1>
+
+    <div class="home-panel card">
+      <div class="car-img-wrap">
+        <img src="images/car.jpg" alt="Your Car"
+             onerror="this.parentElement.innerHTML='<div class=\'car-img-placeholder\'>🚗</div>'">
+      </div>
+      <div class="card status-panel">
+        <div class="card-title">🚗 Car Status</div>
+        <ul class="status-list" id="statusList"></ul>
+      </div>
+    </div>
+
+    <div class="card road-support-section">
+      <div class="card-title">🛠 Road Support</div>
+      <p class="road-support-text">Find the nearest gas station with just a tap</p>
+      <div id="gasToast" class="gas-toast hidden">⛽ Finding your location...</div>
+      <div class="quick-actions">
+        <button class="btn btn-yellow" id="gasBtn">⛽ Nearest Gas Station</button>
+        <button class="btn btn-red" onclick="window.open('https://www.waze.com/live-map','_blank')">🔴 Waze</button>
+        <button class="btn btn-green" onclick="window.open('https://www.google.com/maps','_blank')">G&nbsp; Google Maps</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🌤 Driving Conditions
+        <button class="btn btn-yellow hidden" id="refreshWeatherBtn">↺ Refresh</button>
+      </div>
+      <div id="weatherContent">
+        <p class="loading-msg">Loading weather...</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    🛡 Car Essentials App &nbsp;|&nbsp; © 2026 Ibraheem Iraqi &amp; Mohamad Agbaria
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/home.js"></script>
+</body>
+</html>
