@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Essentials – Status</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+  <div class="site-logo">
+    🚗 car essentials
+    <button class="logout-btn" onclick="localStorage.removeItem('token');localStorage.removeItem('user');window.location.href='index.html'">Logout</button>
+  </div>
+
+  <nav class="navbar">
+    <a href="home.html"     class="nav-link">🏠 <span>home</span></a>
+    <a href="status.html"   class="nav-link active">⚡ <span>status</span></a>
+    <a href="controls.html" class="nav-link">⚙️ <span>controls</span></a>
+    <a href="support.html"  class="nav-link">🎧 <span>support</span></a>
+    <a href="account.html"  class="nav-link">👤 <span>account</span></a>
+  </nav>
+
+  <main class="page-content">
+    <h1 class="page-title">⚡ Live Car Status</h1>
+    <div class="telemetry-grid" id="telemetryGrid">
+    </div>
+    <div class="chart-section">
+      <h2 class="chart-title">Live Telemetry Chart</h2>
+      <canvas id="telemetryChart"></canvas>
+    </div>
+  </main>
+
+  <footer>
+    🛡 Car Essentials App &nbsp;|&nbsp; © 2026 Ibraheem Iraqi &amp; Mohamad Agbaria
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/status.js"></script>
+</body>
+</html>
