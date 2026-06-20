@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Essentials – Support</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+  <div class="site-logo">
+    🚗 car essentials
+    <button class="logout-btn" onclick="localStorage.removeItem('token');localStorage.removeItem('user');window.location.href='index.html'">Logout</button>
+  </div>
+
+  <nav class="navbar">
+    <a href="home.html"     class="nav-link">🏠 <span>home</span></a>
+    <a href="status.html"   class="nav-link">⚡ <span>status</span></a>
+    <a href="controls.html" class="nav-link">⚙️ <span>controls</span></a>
+    <a href="support.html"  class="nav-link active">🎧 <span>support</span></a>
+    <a href="account.html"  class="nav-link">👤 <span>account</span></a>
+  </nav>
+
+  <main class="page-content">
+    <h1 class="page-title">🎧 Support</h1>
+
+    <div class="support-layout">
+      <div class="card">
+        <div class="card-title">Send us a message</div>
+
+        <div id="successMsg" class="success-msg"></div>
+
+        <form id="supportForm" novalidate>
+          <div class="form-group">
+            <input type="text" id="name" class="form-input support-input"
+              placeholder="Your Name">
+            <span class="field-error" id="nameError">Name is required</span>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" class="form-input support-input"
+              placeholder="your@email.com">
+            <span class="field-error" id="emailError">Please enter a valid email address</span>
+          </div>
+          <div class="form-group">
+            <select id="issueType" class="form-input support-input">
+              <option value="">Select Issue Type</option>
+              <option value="technical">Technical Issue</option>
+              <option value="billing">Billing</option>
+              <option value="feature">Feature Request</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="field-error" id="issueError">Please select an issue type</span>
+          </div>
+          <div class="form-group">
+            <textarea id="message" class="form-input support-input support-textarea" rows="4"
+              placeholder="Describe your issue..."></textarea>
+            <span class="field-error" id="messageError">Message must be at least 10 characters</span>
+          </div>
+          <button type="submit" class="btn btn-yellow btn-full">Submit Request</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📋 My Tickets</div>
+        <div id="ticketsList"><p class="loading-msg">Loading tickets...</p></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    🛡 Car Essentials App &nbsp;|&nbsp; © 2026 Ibraheem Iraqi &amp; Mohamad Agbaria
+  </footer>
+
+  <script src="js/support.js"></script>
+</body>
+</html>
