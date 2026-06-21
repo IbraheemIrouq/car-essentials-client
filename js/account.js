@@ -3,11 +3,13 @@ if (!TOKEN) window.location.href = 'index.html';
 
 const BASE_URL = 'https://car-essentials-server-project.onrender.com/api';
 
-async function loadAccount() {
+async function loadAccount() 
+{
   document.getElementById('profileCard').innerHTML = '<p class="loading-msg">Loading...</p>';
   document.getElementById('carCard').innerHTML    = '<p class="loading-msg">Loading...</p>';
 
-  try {
+  try 
+  {
     const [userRes, carRes] = await Promise.all([
       fetch(`${BASE_URL}/auth/me`, { headers: { 'Authorization': `Bearer ${TOKEN}` } }),
       fetch(`${BASE_URL}/car`,     { headers: { 'Authorization': `Bearer ${TOKEN}` } })
@@ -22,13 +24,16 @@ async function loadAccount() {
     if (carData.success) renderCarCard(carData.car);
     else document.getElementById('carCard').innerHTML = '<p class="error-msg">Failed to load car info.</p>';
 
-  } catch {
+  } 
+  catch 
+  {
     document.getElementById('profileCard').innerHTML = '<p class="error-msg">Could not connect to server.</p>';
     document.getElementById('carCard').innerHTML    = '<p class="error-msg">Could not connect to server.</p>';
   }
 }
 
-function renderProfileCard(u) {
+function renderProfileCard(u) 
+{
   document.getElementById('profileCard').innerHTML = `
     <div class="card-title">👤 profile summary</div>
     <div class="profile-field"><strong>name:</strong>  <span>${u.username}</span></div>
@@ -42,7 +47,8 @@ function renderProfileCard(u) {
   document.getElementById('profileCard').dataset.phone    = u.phone || '';
 }
 
-function showEditProfile() {
+function showEditProfile() 
+{
   const card     = document.getElementById('profileCard');
   const username = card.dataset.username;
   const phone    = card.dataset.phone;
@@ -67,13 +73,15 @@ function showEditProfile() {
   document.getElementById('editPhone').value    = phone;
 }
 
-async function saveProfile() {
+async function saveProfile() 
+{
   const username = document.getElementById('editUsername').value.trim();
   const phone    = document.getElementById('editPhone').value.trim();
   const err      = document.getElementById('usernameErr');
   const msg      = document.getElementById('profileMsg');
 
-  if (!username) {
+  if (!username) 
+  {
     document.getElementById('editUsername').classList.add('input-error');
     err.classList.add('visible');
     return;
@@ -81,7 +89,8 @@ async function saveProfile() {
   document.getElementById('editUsername').classList.remove('input-error');
   err.classList.remove('visible');
 
-  try {
+  try 
+  {
     const res  = await fetch(`${BASE_URL}/auth/me`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${TOKEN}` },
@@ -89,20 +98,26 @@ async function saveProfile() {
     });
     const data = await res.json();
 
-    if (data.success) {
+    if (data.success) 
+    {
       showToast('Profile updated successfully');
       loadAccount();
-    } else {
+    } 
+    else 
+    {
       msg.textContent = data.message || 'Failed to update profile.';
       msg.className   = 'error-msg';
     }
-  } catch {
+  } 
+  catch 
+  {
     msg.textContent = 'Could not connect to server.';
     msg.className   = 'error-msg';
   }
 }
 
-function renderCarCard(c) {
+function renderCarCard(c) 
+{
   document.getElementById('carCard').innerHTML = `
     <div class="card-title">🚗 my car</div>
     <div class="profile-field"><strong>brand:</strong>         <span>${c.brand}</span></div>
@@ -120,7 +135,8 @@ function renderCarCard(c) {
   card.dataset.plate   = c.licensePlate;
 }
 
-function showEditCar() {
+function showEditCar() 
+{
   const card  = document.getElementById('carCard');
   const brand = card.dataset.brand;
   const model = card.dataset.model;
@@ -154,14 +170,16 @@ function showEditCar() {
   document.getElementById('editPlate').value = plate;
 }
 
-async function saveCar() {
+async function saveCar() 
+{
   const brand        = document.getElementById('editBrand').value.trim();
   const model        = document.getElementById('editModel').value.trim();
   const year         = parseInt(document.getElementById('editYear').value);
   const licensePlate = document.getElementById('editPlate').value.trim();
   const msg          = document.getElementById('carMsg');
 
-  try {
+  try 
+  {
     const res  = await fetch(`${BASE_URL}/car`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${TOKEN}` },
@@ -169,20 +187,26 @@ async function saveCar() {
     });
     const data = await res.json();
 
-    if (data.success) {
+    if (data.success) 
+    {
       showToast('Car info updated successfully');
       loadAccount();
-    } else {
+    } 
+    else 
+    {
       msg.textContent = data.message || 'Failed to update car.';
       msg.className   = 'error-msg';
     }
-  } catch {
+  } 
+  catch 
+  {
     msg.textContent = 'Could not connect to server.';
     msg.className   = 'error-msg';
   }
 }
 
-function showToast(message) {
+function showToast(message) 
+{
   const toast = document.getElementById('toast');
   if (!toast) return;
   toast.textContent = message;

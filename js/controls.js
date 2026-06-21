@@ -12,29 +12,35 @@ const CONTROLS_MAP = [
 
 let currentControls = {};
 
-async function loadControls() {
+async function loadControls() 
+{
   const grid = document.getElementById('controlsGrid');
   grid.innerHTML = '<p class="loading-msg">Loading controls...</p>';
 
-  try {
+  try 
+  {
     const res = await fetch(`${BASE_URL}/controls`, {
       headers: { 'Authorization': `Bearer ${TOKEN}` }
     });
     const data = await res.json();
 
-    if (!data.success) {
+    if (!data.success) 
+    {
       grid.innerHTML = '<p class="error-msg">Failed to load controls.</p>';
       return;
     }
 
     currentControls = data.controls;
     renderControls();
-  } catch {
+  } 
+  catch 
+  {
     grid.innerHTML = '<p class="error-msg">Could not connect to server.</p>';
   }
 }
 
-function renderControls() {
+function renderControls() 
+{
   document.getElementById('controlsGrid').innerHTML = CONTROLS_MAP.map((ctrl, i) => {
     const rawValue = ctrl.id === 'ac' ? currentControls.ac?.state : currentControls[ctrl.id];
     const isOn = rawValue === ctrl.valueOn;
@@ -48,14 +54,16 @@ function renderControls() {
   }).join('');
 }
 
-async function toggleControl(index) {
+async function toggleControl(index) 
+{
   const ctrl = CONTROLS_MAP[index];
   const rawValue = ctrl.id === 'ac' ? currentControls.ac?.state : currentControls[ctrl.id];
   const isOn = rawValue === ctrl.valueOn;
   const newValue = isOn ? ctrl.valueOff : ctrl.valueOn;
   const controlKey = ctrl.id === 'ac' ? 'ac.state' : ctrl.id;
 
-  try {
+  try 
+  {
     const res = await fetch(`${BASE_URL}/controls`, {
       method: 'PUT',
       headers: {
@@ -67,19 +75,25 @@ async function toggleControl(index) {
 
     const data = await res.json();
 
-    if (data.success) {
+    if (data.success) 
+    {
       currentControls = data.controls;
       renderControls();
       showToast(`${ctrl.label}: ${newValue}`);
-    } else {
+    } 
+    else 
+    {
       showToast('Failed to update control', 'error');
     }
-  } catch {
+  } 
+  catch 
+  {
     showToast('Could not connect to server', 'error');
   }
 }
 
-function showToast(message) {
+function showToast(message) 
+{
   const toast = document.getElementById('toast');
   toast.textContent = message;
   toast.classList.add('show');

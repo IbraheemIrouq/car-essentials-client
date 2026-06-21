@@ -67,7 +67,7 @@ a { text-decoration: none; }
 }
 .logout-btn:hover { background: #b91c1c; }
 
-/* NavigationBar */
+/* NavBar */
 .navbar 
 {
   display: flex;
