@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Essentials – Account</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+  <div class="site-logo">
+    🚗 car essentials
+    <button class="logout-btn" onclick="localStorage.removeItem('token');localStorage.removeItem('user');window.location.href='index.html'">Logout</button>
+  </div>
+
+  <nav class="navbar">
+    <a href="home.html"     class="nav-link">🏠 <span>home</span></a>
+    <a href="status.html"   class="nav-link">⚡ <span>status</span></a>
+    <a href="controls.html" class="nav-link">⚙️ <span>controls</span></a>
+    <a href="support.html"  class="nav-link">🎧 <span>support</span></a>
+    <a href="account.html"  class="nav-link active">👤 <span>account</span></a>
+  </nav>
+
+  <main class="page-content">
+    <h1 class="page-title">👤 your profile</h1>
+
+    <div class="account-grid">
+      <div class="card" id="profileCard">
+      </div>
+      <div class="card" id="carCard">
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    🛡 car essentials app &nbsp;|&nbsp; © 2026 ibraheem iraqi &amp; mohamad agbaria
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/account.js"></script>
+</body>
+</html>
